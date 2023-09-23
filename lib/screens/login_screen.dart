@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:authentication_firebase_app/main.dart';
+import 'package:authentication_firebase_app/screens/forgot_password_screen.dart';
 import 'package:authentication_firebase_app/utils/utils.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,6 +26,7 @@ class LoginScreen extends StatelessWidget {
 
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) => const Center(child: CircularProgressIndicator()),
       );
       try {
@@ -86,6 +88,22 @@ class LoginScreen extends StatelessWidget {
                             EdgeInsets.symmetric(horizontal: 70, vertical: 15),
                         child: Text('Login'),
                       ),
+                    ),
+                    const SizedBox(height: 20),
+                    GestureDetector(
+                      child: const Text(
+                        'Forgot Password ? ',
+                        style: TextStyle(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen(),
+                          )),
                     ),
                     const SizedBox(height: 40),
                     RichText(

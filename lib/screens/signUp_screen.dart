@@ -23,8 +23,9 @@ class SignUpScreen extends StatelessWidget {
       final isvalid = formKey.currentState!.validate();
       if (!isvalid) return;
 
-      showDialog(
+       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (context) => const Center(child: CircularProgressIndicator()),
       );
       try {
