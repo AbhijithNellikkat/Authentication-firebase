@@ -1,5 +1,6 @@
 import 'package:authentication_firebase_app/app.dart';
 import 'package:authentication_firebase_app/firebase_options.dart';
+import 'package:authentication_firebase_app/utils/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

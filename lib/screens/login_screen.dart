@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:authentication_firebase_app/main.dart';
+import 'package:authentication_firebase_app/utils/utils.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -27,12 +28,15 @@ class LoginScreen extends StatelessWidget {
         builder: (context) => const Center(child: CircularProgressIndicator()),
       );
       try {
+        FocusManager.instance.primaryFocus?.unfocus();
         await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );
       } on FirebaseAuthException catch (e) {
         log('$e');
+
+        Utils.showSnackBar('${e.message}');
       }
       navigatorKey.currentState!.popUntil((route) => route.isFirst);
     }
